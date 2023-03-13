@@ -10,12 +10,12 @@ public class Tickets {
 
     private int userId;
 
-    public Tickets(int ticketId, int concertId, String userName, float ticketPrice, int userId) {
+    public Tickets(int ticketId, float ticketPrice, int concertId, int userId,String userName) {
         this.ticketId = ticketId;
-        this.concertId = concertId;
-        this.userName = userName;
         this.ticketPrice = ticketPrice;
+        this.concertId = concertId;
         this.userId = userId;
+        this.userName = userName;
     }
 
     public int getTicketId() {
@@ -35,5 +35,30 @@ public class Tickets {
     }
     public void setUserName(String userName) {
         this.userName = userName;
+    }
+
+    public float getTicketPrice() {
+        return ticketPrice;
+    }
+    public String toString() {
+        return "Ticket{" +
+                "tid=" + ticketId +
+                ", Price='" + ticketPrice + '\'' +
+                ", concertID='" + concertId + '\'' +"" +
+                ", cashierId='" + userId + '\'' +
+                ", buyer='" + userName + '\'' +
+                '}';
+    }
+
+    public void setTicketPrice(float ticketPrice) {
+        this.ticketPrice = ticketPrice;
+    }
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 }

@@ -12,6 +12,13 @@ public class ConcertArtists {
         this.concertId = concertId;
         this.artistId = artistId;
     }
+    public String toString() {
+        return "Concert Artits{" +
+                "id=" + conArtistsId +
+                ", related concert='" + concertId + '\'' +
+                ", related artist='" + artistId + '\'' +"" +
+                '}';
+    }
 
     public int getConArtistsId() {
         return conArtistsId;

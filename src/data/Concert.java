@@ -1,21 +1,32 @@
 package data;
+import java.sql.Date;
+import java.sql.Timestamp;
 import java.time.LocalDateTime;
 
 public class Concert {
     private int concertId;
     private String concertName;
-    private LocalDateTime concertDate;
+    private Timestamp concertDate;
 
     private String concertInfo;
 
     private int noOfTickets;
 
-    public Concert(int concertId, String concertName, LocalDateTime concertDate, String concertInfo, int noOfTickets) {
+    public Concert(int concertId, String concertName, String concertInfo, Timestamp concertDate, int noOfTickets) {
         this.concertId = concertId;
         this.concertName = concertName;
         this.concertDate = concertDate;
         this.concertInfo = concertInfo;
         this.noOfTickets = noOfTickets;
+    }
+    public String toString() {
+        return "Concert{" +
+                "id=" + concertId +
+                ", name='" + concertName + '\'' +
+                ", info='" + concertInfo + '\'' +
+                ", date='" + concertDate + '\'' +
+                ", tickets='" + noOfTickets + '\'' +
+                '}';
     }
 
     public int getConcertId() {
@@ -30,10 +41,10 @@ public class Concert {
     public void setConcertName(String concertName) {
         this.concertName = concertName;
     }
-    public LocalDateTime getConcertDate() {
+    public Timestamp getConcertDate() {
         return concertDate;
     }
-    public void setConcertDate(LocalDateTime concertDate) {
+    public void setConcertDate(Timestamp concertDate) {
         this.concertDate = concertDate;
     }
     public String getConcertInfo() {

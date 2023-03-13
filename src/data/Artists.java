@@ -12,6 +12,13 @@ public class Artists {
         this.artistName = artistName;
         this.artistGenre = artistGenre;
     }
+    public String toString() {
+        return "Artist{" +
+                "id=" + artistId +
+                ", name='" + artistName + '\'' +
+                ", genre='" + artistGenre + '\'' +
+                '}';
+    }
 
     public int getArtistId() {
         return artistId;

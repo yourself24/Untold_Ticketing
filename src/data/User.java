@@ -14,6 +14,14 @@ public class User {
         this.userPassword = userPassword;
         this.userType = userType;
     }
+    public String toString() {
+        return "Artist{" +
+                "uid=" + userId +
+                ", name='" + userName + '\'' +
+                ", password='" + userPassword + '\'' +"" +
+                ", type='" + userType + '\'' +
+                '}';
+    }
     public int getUserId() {
         return userId;
     }
