@@ -1,7 +1,9 @@
 package business;
 
+import data.Artists;
 import data.Concert;
 import data.User;
+import persistence.ArtistDAO;
 import persistence.ConcertDAO;
 import persistence.DBCon;
 import persistence.UserDAO;
@@ -129,6 +131,56 @@ public class AdminBL {
             return false;
         }
     }
+    //Part 3. CRUD operations on artists
+    //retrieving artists
+    ArtistDAO artistDAO = new ArtistDAO(dbcon);
+    public List <Artists> getArtists(){
+        List<Artists> listArtists = null;
+        try {
+            listArtists = artistDAO.findAll();
+        }catch (SQLException ex){
+            ex.printStackTrace();
+        }
+        return listArtists;
 
+    }
+    //create a new artist
+    public boolean createArtist(String artistName,String artistGenre){
+        Random rand = new Random();
+        int id = rand.nextInt(1000);
+        Artists art = new Artists(id,artistName,artistGenre);
+        try{
+            artistDAO.insert(art);
+            return true;
+        }catch (SQLException ex){
+            ex.printStackTrace();
+            return false;
+        }
+    }
+
+    //delete an artist
+    public boolean deleteArtist(String artistName) throws SQLException{
+        Artists art = artistDAO.findbyName(artistName);
+        try{
+            artistDAO.delete(art);
+            return true;
+        }catch (SQLException ex){
+            ex.printStackTrace();
+            return false;
+        }
+    }
+    //update an artist
+    public boolean updateArtist(int artId,String artistName,String artistGenre) throws SQLException{
+        Artists artist = artistDAO.findbyId(artId);
+        artist.setArtistName(artistName);
+        artist.setArtistGenre(artistGenre);
+        try{
+            artistDAO.update(artist);
+            return true;
+    } catch (SQLException ex) {
+        ex.printStackTrace();
+        return false;
+    }
+    }
 
 }

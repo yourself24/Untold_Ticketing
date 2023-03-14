@@ -47,13 +47,17 @@ public class CashierBL {
             }
     }
 
-    public void deleteTicket(int ticketId) throws SQLException {
+    public boolean deleteTicket(int ticketId) throws SQLException {
+        boolean succ = false;
         Tickets t1 = new Tickets(ticketId, 25.4F, 2, 23, "sad");
         try {
-            tdao.delete(t1);
+            if(tdao.delete(t1)){
+                succ = true;
+            }
         } catch (SQLException eq) {
             eq.printStackTrace();
         }
+        return succ;
     }
 
     public List<Tickets> viewTickets(String concertName) throws SQLException {

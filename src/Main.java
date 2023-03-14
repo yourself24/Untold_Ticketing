@@ -3,6 +3,9 @@ import business.CashierBL;
 import business.UserBL;
 import data.*;
 import persistence.*;
+import presentation.CashierPanel;
+import presentation.LoginFrame;
+
 import java.util.Base64;
 
 
@@ -67,6 +70,10 @@ public class Main {
             for (User u: cashierList){
                 System.out.println(u);
             }
+            LoginFrame loginFrame = new LoginFrame();
+            loginFrame.setVisible(true);
+            //CashierPanel cashierPanel = new CashierPanel();
+            ///cashierPanel.setVisible(true);
 
         } catch (SQLException ex) {
            ex.printStackTrace();

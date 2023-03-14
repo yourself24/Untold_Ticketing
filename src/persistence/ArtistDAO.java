@@ -79,4 +79,40 @@ public class ArtistDAO extends AbstractDAO<Artists> {
         }
 
     }
+    public Artists findbyName(String name) throws SQLException {
+        Artists art = null;
+        try(Connection con = getConnection();
+            PreparedStatement statement = con.prepareStatement(READ_SQL);
+            ResultSet resultSet = statement.executeQuery()){
+            while(resultSet.next()){
+                int art_id = resultSet.getInt("art_id");
+                String name1 = resultSet.getString("name");
+                String genre = resultSet.getString("genre");
+                if(name1.equals(name)){
+                    art = new Artists(art_id,name1,genre);
+                    break;
+                }
+            }
+
+        }
+        return art;
+    }
+    public Artists findbyId(int artId) throws SQLException {
+        Artists art = null;
+        try(Connection con = getConnection();
+            PreparedStatement statement = con.prepareStatement(READ_SQL);
+            ResultSet resultSet = statement.executeQuery()){
+            while(resultSet.next()){
+                int art_id = resultSet.getInt("art_id");
+                String name1 = resultSet.getString("name");
+                String genre = resultSet.getString("genre");
+                if(art_id == artId){
+                    art = new Artists(art_id,name1,genre);
+                    break;
+                }
+            }
+
+        }
+        return art;
+    }
 }

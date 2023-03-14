@@ -10,11 +10,12 @@ import java.util.List;
 
 public class UserBL
 {
+    DBCon con = new DBCon();
+    UserDAO udao = new UserDAO(con);
     public boolean credentialsCheck(String username, String password) throws SQLException
     {
      boolean check = false;
-        DBCon con = new DBCon();
-        UserDAO udao = new UserDAO(con);
+
         List<User> uList = udao.findAll();
         for (User u : uList)
         {
@@ -29,8 +30,6 @@ public class UserBL
     public String foundUser(String username) throws SQLException
     {
         String type = "";
-        DBCon con = new DBCon();
-        UserDAO udao = new UserDAO(con);
         List<User> uList = udao.findAll();
         for (User u : uList)
         {
@@ -41,5 +40,16 @@ public class UserBL
             }
         }
         return type;
+    }
+    public User returnUser(String username) throws SQLException{
+        User user = null;
+        try {
+            user = udao.findUser(username);
+        }catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+            return user;
+
+
     }
 }
