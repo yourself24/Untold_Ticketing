@@ -62,6 +62,11 @@ public class LoginFrame extends JFrame {
                                 cashierFrame.setVisible(true);
                                 dispose();
                          }
+                         else if(type.equals("admin")){
+                             AdminPanel adminFrame = new AdminPanel(userBL.returnUser(username));
+                                adminFrame.setVisible(true);
+                                //dispose();
+                         }
 
                      }
                  }catch (SQLException ex) {

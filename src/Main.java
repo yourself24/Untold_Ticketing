@@ -3,6 +3,7 @@ import business.CashierBL;
 import business.UserBL;
 import data.*;
 import persistence.*;
+import presentation.AdminPanel;
 import presentation.CashierPanel;
 import presentation.LoginFrame;
 
@@ -74,6 +75,8 @@ public class Main {
             loginFrame.setVisible(true);
             //CashierPanel cashierPanel = new CashierPanel();
             ///cashierPanel.setVisible(true);
+            //AdminPanel adminPanel = new AdminPanel(u1);
+                    //udao.insert(u1);
 
         } catch (SQLException ex) {
            ex.printStackTrace();

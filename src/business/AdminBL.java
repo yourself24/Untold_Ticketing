@@ -2,15 +2,14 @@ package business;
 
 import data.Artists;
 import data.Concert;
+import data.Tickets;
 import data.User;
-import persistence.ArtistDAO;
-import persistence.ConcertDAO;
-import persistence.DBCon;
-import persistence.UserDAO;
+import persistence.*;
 
 import java.sql.SQLException;
 import java.sql.Time;
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
@@ -181,6 +180,25 @@ public class AdminBL {
         ex.printStackTrace();
         return false;
     }
+    }
+    public List<Tickets> viewTickets(String concertName) throws SQLException {
+        List<Tickets> tList = new ArrayList<>();
+        ConcertDAO cdao = new ConcertDAO(dbcon);
+        TicketsDAO tdao = new TicketsDAO(dbcon);
+        int concertId = cdao.findByName(concertName);
+        try {
+            tList = tdao.findAll();
+            Iterator<Tickets> it = tList.iterator();
+            while (it.hasNext()) {
+                Tickets t = it.next();
+                if (t.getConcertId() != concertId) {
+                    it.remove();
+                }
+            }
+        } catch (SQLException eq) {
+            eq.printStackTrace();
+        }
+        return tList;
     }
 
 }
