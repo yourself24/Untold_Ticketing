@@ -58,9 +58,10 @@ public class ArtistDAO extends AbstractDAO<Artists> {
     public boolean insert(Artists artist) throws SQLException {
         try(Connection con = getConnection();
             PreparedStatement statement = con.prepareStatement(CREATE_SQL)){
-            statement.setString(1,artist.getArtistName());
-            statement.setString(2,artist.getArtistGenre());
-            statement.setInt(3,artist.getArtistId());
+            statement.setInt(1,artist.getArtistId());
+            statement.setString(2,artist.getArtistName());
+            statement.setString(3,artist.getArtistGenre());
+
             int rowsAffected = statement.executeUpdate();
             con.close();
             return rowsAffected == 1;

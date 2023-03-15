@@ -7,7 +7,6 @@ import data.User;
 import persistence.*;
 
 import java.sql.SQLException;
-import java.sql.Time;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -15,10 +14,8 @@ import java.util.List;
 import java.util.Random;
 
 public class AdminBL {
-    //the admin will be able to
-    private User user;
     public AdminBL(User usr){
-        this.user = usr;
+        //the admin will be able to
     }
     DBCon dbcon = new DBCon();
     UserDAO userDAO = new UserDAO(dbcon);

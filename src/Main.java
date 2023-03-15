@@ -71,8 +71,12 @@ public class Main {
             for (User u: cashierList){
                 System.out.println(u);
             }
-            LoginFrame loginFrame = new LoginFrame();
-            loginFrame.setVisible(true);
+            //adminBl.createArtist("Stormzy","Drill");
+            //adminBl.createCashier("Lucca","tom123");
+            //adminBl.createConcert("DayDreaming Stage","minimale",Timestamp.valueOf("2023-03-30 22:30:00"),30);
+            adminBl.updateArtist(artList.get(0).getArtistId(),"Stormzzy","Rap");
+            //LoginFrame loginFrame = new LoginFrame();
+            //loginFrame.setVisible(true);
             //CashierPanel cashierPanel = new CashierPanel();
             ///cashierPanel.setVisible(true);
             //AdminPanel adminPanel = new AdminPanel(u1);
